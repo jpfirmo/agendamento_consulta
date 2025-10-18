@@ -1,20 +1,23 @@
 <?php
-
 $host = "localhost";
-$dbname = "agendamento_consulta";
+$dbname = "agenda_consulta";
 $user = "root";
 $password = "28132813";
 
-try{
+try {
+    // Conexão com charset UTF-8 (evita erro com acentuação)
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
 
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    // Ativar modo de erros para exceções
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    //ativar modo de erros
-    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);  
+    // Opcional: modo FETCH_ASSOC para facilitar uso
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-}catch(PDOException $e){
-    //erro na conexão
-    $error = $e->getMessage();
-    echo "erro: $error";
+    // echo "Conexão bem-sucedida!"; // (pode deixar comentado)
+    
+} catch (PDOException $e) {
+    echo "Erro na conexão: " . $e->getMessage();
+    exit; // garante que o código para aqui se falhar
 }
-
+?>
