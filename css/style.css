@@ -1,3 +1,83 @@
 .navbar-brand img {
     width: 50px;
 }
+
+/* ==========================
+   GERAL (index, header, footer)
+   ========================== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+/* ==========================
+   HOME MINIMALISTA
+   ========================== */
+.home-minimalista {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.home-minimalista a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home-minimalista a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================
+   ÁREA LOGADA (PACIENTE / MÉDICO)
+   ========================== */
+.home-logado {
+    text-align: center;
+}
+
+.tabela-consultas {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.tabela-consultas th, .tabela-consultas td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.tabela-consultas th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* ==========================
+   BOTÕES GERAIS
+   ========================== */
+.botao {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background-color: #0056b3;
+}
+
