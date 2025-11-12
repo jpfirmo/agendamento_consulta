@@ -58,8 +58,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Redireciona conforme o tipo de usuário
             if ($tipo_usuario === "paciente") {
                 header("Location: home_paciente.php");
+             // Mensagem de sucesso
+            $_SESSION["mensagem"] = "Login realizado com sucesso!";
+            $_SESSION["mensagem_tipo"] = "sucesso";
+
             } else {
                 header("Location: home_medico.php");
+             // Mensagem de sucesso
+            $_SESSION["mensagem"] = "Login realizado com sucesso!";
+            $_SESSION["mensagem_tipo"] = "sucesso";
+
             }
             exit;
 
