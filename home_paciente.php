@@ -19,6 +19,20 @@ $nome = htmlspecialchars($_SESSION['usuario_nome']);
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<?php
+// Exibe mensagem de login bem-sucedido (ou qualquer outra)
+if (isset($_SESSION['mensagem'])) {
+    $mensagem = htmlspecialchars($_SESSION['mensagem']);
+    $tipo = $_SESSION['mensagem_tipo'] ?? 'sucesso';
+    echo "<div class='mensagem $tipo'>$mensagem</div>";
+
+    // Limpa da sessão após exibir
+    unset($_SESSION['mensagem']);
+    unset($_SESSION['mensagem_tipo']);
+}
+?>
+
     <div class="container">
         <header>
             <h1>Bem-vindo, <?= $nome ?> 🧑‍⚕️</h1>
@@ -35,5 +49,17 @@ $nome = htmlspecialchars($_SESSION['usuario_nome']);
             </div>
         </main>
     </div>
+
+<script>
+// Efeito de fade-out para mensagens
+setTimeout(() => {
+    const msg = document.querySelector('.mensagem');
+    if (msg) {
+        msg.classList.add('fade-out');
+        setTimeout(() => msg.remove(), 500);
+    }
+}, 3000);
+</script>
+
 </body>
 </html>
