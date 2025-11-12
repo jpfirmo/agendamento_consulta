@@ -81,3 +81,99 @@ body {
     background-color: #0056b3;
 }
 
+/* ===========================
+   MENSAGENS DE FEEDBACK
+   =========================== */
+.mensagem {
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
+    margin: 15px auto;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+    animation: fadeOut 5s forwards;
+}
+
+.mensagem.sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.mensagem.erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+/* ==========================
+   home médico e home paciente
+   ========================== */
+
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Mensagens */
+.mensagem {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 9999;
+}
+
+.mensagem.sucesso {
+    background-color: #28a745;
+}
+
+.mensagem.erro {
+    background-color: #dc3545;
+}
+
+.mensagem.fade-out {
+    opacity: 0;
+}
