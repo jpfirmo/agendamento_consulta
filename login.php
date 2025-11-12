@@ -1,92 +1,78 @@
 <?php
-include_once("templates/header.php");
+session_start();
 ?>
+
+<?php include_once("templates/header.php"); ?>
+
+<!-- Importa o CSS -->
+<link rel="stylesheet" href="css/style.css">
 
 <div class="container mt-5">
     <div class="card shadow-lg p-4 rounded-4" style="max-width: 400px; margin: auto;">
         <h2 class="text-center mb-4">Login</h2>
-
-        <form action="processa_login.php" method="POST">
-            <!-- Selecionar tipo de usuário -->
-            <div class="mb-3">
-                <label for="tipo_usuario" class="form-label fw-bold">Entrar como:</label>
-                <select class="form-select" id="tipo_usuario" name="tipo_usuario" required>
-                    <option value="">Selecione...</option>
-                    <option value="paciente">Paciente</option>
-                    <option value="medico">Médico</option>
-                </select>
+        <!-- Mensagem de erro (fade-out) -->
+        <?php if (isset($_SESSION['mensagem'])): ?>
+            <div class="mensagem <?= htmlspecialchars($_SESSION['mensagem_tipo']) ?>">
+                <?= htmlspecialchars($_SESSION['mensagem']) ?>
             </div>
+            <?php unset($_SESSION['mensagem']); unset($_SESSION['mensagem_tipo']); ?>
+        <?php endif; ?>
 
-            <!-- CPF (para paciente) -->
-            <div id="campoPaciente" style="display:none;">
-                <div class="mb-3">
-                    <label for="cpf" class="form-label fw-bold">CPF:</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF">
-                </div>
-            </div>
-
-            <!-- CRM (para médico) -->
-            <div id="campoMedico" style="display:none;">
-                <div class="mb-3">
-                    <label for="crm" class="form-label fw-bold">CRM:</label>
-                    <input type="text" class="form-control" id="crm" name="crm" placeholder="Digite seu CRM">
-                </div>
-            </div>
-
-            <!-- Campo de senha -->
-            <div class="mb-3">
-                <label for="senha" class="form-label fw-bold">Senha:</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" required>
-                    <button type="button" class="btn btn-outline-secondary" id="toggleSenha">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100 mb-3">Entrar</button>
-        </form>
-
-        <div class="text-center">
-            <p class="mb-0">Ainda não tem conta?</p>
-            <a href="cadastro.php" class="text-decoration-none fw-bold">Cadastre-se aqui</a>
+    <form action="processa_login.php" method="POST">
+        <div class="mb-3">
+            <label for="tipo_usuario" class="form-label">Tipo de Usuário:</label>
+            <select name="tipo_usuario" id="tipo_usuario" class="form-select">
+                <option value="">Selecione</option>
+                <option value="paciente">Paciente</option>
+                <option value="medico">Médico</option>
+            </select>
         </div>
+        <div class="mb-3" id="campo_cpf" style="display:none;">
+            <label for="cpf" class="form-label">CPF:</label>
+            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Digite seu CPF">
+        </div>
+        <div class="mb-3" id="campo_crm" style="display:none;">
+            <label for="crm" class="form-label">CRM:</label>
+            <input type="text" name="crm" id="crm" class="form-control" placeholder="Digite seu CRM">
+        </div>
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+        <p class="text-center mt-3">
+            Ainda não tem uma conta? <a href="cadastro.php">Cadastre-se</a>
+        </p>
     </div>
 </div>
 
-<!-- Script para alternar campos conforme o tipo de usuário -->
+<!-- Script para alternar CPF/CRM e fade-out -->
 <script>
-document.getElementById("tipo_usuario").addEventListener("change", function() {
-    const tipo = this.value;
-    const campoPaciente = document.getElementById("campoPaciente");
-    const campoMedico = document.getElementById("campoMedico");
+document.addEventListener("DOMContentLoaded", () => {
+    const tipoUsuario = document.getElementById("tipo_usuario");
+    const campoCpf = document.getElementById("campo_cpf");
+    const campoCrm = document.getElementById("campo_crm");
 
-    // Esconde todos por padrão
-    campoPaciente.style.display = "none";
-    campoMedico.style.display = "none";
+    tipoUsuario.addEventListener("change", () => {
+        if (tipoUsuario.value === "paciente") {
+            campoCpf.style.display = "block";
+            campoCrm.style.display = "none";
+        } else if (tipoUsuario.value === "medico") {
+            campoCrm.style.display = "block";
+            campoCpf.style.display = "none";
+        } else {
+            campoCpf.style.display = "none";
+            campoCrm.style.display = "none";
+        }
+    });
 
-    // Mostra o campo conforme o tipo selecionado
-    if (tipo === "paciente") {
-        campoPaciente.style.display = "block";
-    } else if (tipo === "medico") {
-        campoMedico.style.display = "block";
-    }
-});
-
-// Mostrar/ocultar senha
-document.getElementById("toggleSenha").addEventListener("click", function() {
-    const senhaInput = document.getElementById("senha");
-    const icone = this.querySelector("i");
-    if (senhaInput.type === "password") {
-        senhaInput.type = "text";
-        icone.classList.replace("fa-eye", "fa-eye-slash");
-    } else {
-        senhaInput.type = "password";
-        icone.classList.replace("fa-eye-slash", "fa-eye");
-    }
+    // Oculta a mensagem após 5 segundos
+    setTimeout(() => {
+        const msg = document.querySelector('.mensagem');
+        if (msg) msg.style.display = 'none';
+    }, 5000);
 });
 </script>
 
-<?php
-include_once("templates/footer.php");
-?>
+<?php include_once("templates/footer.php"); ?>
