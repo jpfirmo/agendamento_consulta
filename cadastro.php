@@ -1,26 +1,41 @@
 <?php
+session_start();
 include_once("templates/header.php");
 ?>
 
 <div class="container mt-5">
+
+    <!-- MENSAGEM DO SISTEMA (sucesso ou erro) -->
+    <?php if (isset($_SESSION['mensagem'])): ?>
+        <div class="alert <?= $_SESSION['mensagem_tipo'] === 'sucesso' ? 'alert-success' : 'alert-danger' ?> 
+                     text-center fade-out">
+            <?= htmlspecialchars($_SESSION['mensagem']) ?>
+        </div>
+        <?php 
+            unset($_SESSION['mensagem']); 
+            unset($_SESSION['mensagem_tipo']);
+        ?>
+    <?php endif; ?>
+
     <div class="card shadow-lg p-4 rounded-4" style="max-width: 450px; margin: auto;">
         <h2 class="text-center mb-4">Cadastro de Usuário</h2>
 
         <form action="processa_cadastro.php" method="POST" id="formCadastro">
+
             <!-- Selecionar tipo de usuário -->
             <div class="mb-3">
                 <label for="tipo_usuario" class="form-label fw-bold">Cadastrar como:</label>
-                <select class="form-select" id="tipo_usuario" name="tipo_usuario" required>
+                <select class="form-select" id="tipo_usuario" name="tipo_usuario">
                     <option value="">Selecione...</option>
                     <option value="paciente">Paciente</option>
                     <option value="medico">Médico</option>
                 </select>
             </div>
 
-            <!-- Campos comuns -->
+            <!-- Campo comum: Nome -->
             <div class="mb-3">
                 <label for="nome" class="form-label fw-bold">Nome:</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome completo">
             </div>
 
             <!-- Campos específicos do PACIENTE -->
@@ -49,18 +64,21 @@ include_once("templates/header.php");
                 </div>
             </div>
 
-            <!-- Senha -->
+            <!-- Campo de senha -->
             <div class="mb-3">
                 <label for="senha" class="form-label fw-bold">Senha:</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Crie uma senha" required>
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Crie uma senha">
                     <button type="button" class="btn btn-outline-secondary" id="toggleSenha">
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
             </div>
+
             <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+
         </form>
+
         <div class="text-center mt-3">
             <p>Já tem conta?</p>
             <a href="login.php" class="text-decoration-none fw-bold">Faça login</a>
@@ -75,11 +93,9 @@ document.getElementById("tipo_usuario").addEventListener("change", function() {
     const paciente = document.getElementById("camposPaciente");
     const medico = document.getElementById("camposMedico");
 
-    // Oculta todos inicialmente
     paciente.style.display = "none";
     medico.style.display = "none";
 
-    // Mostra conforme o tipo
     if (tipo === "paciente") {
         paciente.style.display = "block";
     } else if (tipo === "medico") {
@@ -91,6 +107,7 @@ document.getElementById("tipo_usuario").addEventListener("change", function() {
 document.getElementById("toggleSenha").addEventListener("click", function() {
     const senhaInput = document.getElementById("senha");
     const icone = this.querySelector("i");
+
     if (senhaInput.type === "password") {
         senhaInput.type = "text";
         icone.classList.replace("fa-eye", "fa-eye-slash");
@@ -101,6 +118,17 @@ document.getElementById("toggleSenha").addEventListener("click", function() {
 });
 </script>
 
-<?php
-include_once("templates/footer.php");
-?>
+<!-- Fade-out da mensagem -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const msg = document.querySelector(".fade-out");
+    if (msg) {
+        setTimeout(() => {
+            msg.style.opacity = "0";
+            msg.style.transition = "opacity 0.8s ease";
+        }, 3000);
+    }
+});
+</script>
+
+<?php include_once("templates/footer.php"); ?>
