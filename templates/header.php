@@ -26,7 +26,6 @@ include_once("config/url.php");
             <div>
                 <div class="navbar-nav">
                     <a class="nav-link active" id="home-link" href="<?= $BASE_URL ?>index.php">Agenda de Consulta</a>
-                    <a class="nav-link active" id="home-link" href="<?= $BASE_URL ?>cadastro.php">Registrar-se</a>
                 </div>
             </div>
         </nav>
