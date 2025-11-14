@@ -1,10 +1,6 @@
-.navbar-brand img {
-    width: 50px;
-}
-
-/* ==========================
-   GERAL (index, header, footer)
-   ========================== */
+/* ============================================
+   RESET / BASE
+=============================================== */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f3f6fa;
@@ -12,6 +8,11 @@ body {
     padding: 0;
 }
 
+.navbar-brand img {
+    width: 50px;
+}
+
+/* Container padrão */
 .container {
     width: 90%;
     max-width: 900px;
@@ -22,9 +23,18 @@ body {
     padding: 30px;
 }
 
-/* ==========================
-   HOME MINIMALISTA
-   ========================== */
+/* VARIAÇÃO DE CONTAINER PARA HOME LOGADA */
+.container.home-area {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 40px;
+    text-align: center;
+}
+
+/* ============================================
+   HOME MINIMALISTA (index)
+=============================================== */
+
 .home-minimalista {
     text-align: center;
     padding: 50px 20px;
@@ -40,11 +50,12 @@ body {
     text-decoration: underline;
 }
 
-/* ==========================
+/* ============================================
    ÁREA LOGADA (PACIENTE / MÉDICO)
-   ========================== */
-.home-logado {
-    text-align: center;
+=============================================== */
+
+.home-logado h1 {
+    color: #333;
 }
 
 .tabela-consultas {
@@ -53,7 +64,8 @@ body {
     margin-top: 20px;
 }
 
-.tabela-consultas th, .tabela-consultas td {
+.tabela-consultas th, 
+.tabela-consultas td {
     border: 1px solid #ccc;
     padding: 10px;
 }
@@ -63,27 +75,42 @@ body {
     color: #fff;
 }
 
-/* ==========================
-   BOTÕES GERAIS
-   ========================== */
+/* ============================================
+   BOTÕES PADRÃO
+=============================================== */
+
+.btn,
 .botao {
     display: inline-block;
     margin-top: 20px;
-    background-color: #007bff;
+    padding: 10px 25px;
+    background: #007bff;
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 6px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: background 0.3s;
 }
 
+.btn:hover,
 .botao:hover {
-    background-color: #0056b3;
+    background: #0056b3;
 }
 
-/* ===========================
-   MENSAGENS DE FEEDBACK
-   =========================== */
+.btn-logout {
+    background-color: #dc3545;
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+}
+
+.btn-logout:hover {
+    background-color: #b52a37;
+}
+
+/* ============================================
+   MENSAGENS DE FEEDBACK (LOGIN / CADASTRO)
+=============================================== */
+
 .mensagem {
     padding: 10px 15px;
     border-radius: 8px;
@@ -107,73 +134,36 @@ body {
     border: 1px solid #f5c6cb;
 }
 
+/* Mensagem fixa no canto (área logada) */
+.mensagem.fixed {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-weight: 500;
+}
+
 @keyframes fadeOut {
     0% { opacity: 1; }
     80% { opacity: 1; }
     100% { opacity: 0; display: none; }
 }
-/* ==========================
-   home médico e home paciente
-   ========================== */
 
-   body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+/* ============================================
+   CAMPOS E FORMULÁRIOS (login e cadastro)
+=============================================== */
+
+input,
+select {
+    border-radius: 6px !important;
 }
 
-.container {
-    max-width: 600px;
-    margin: 100px auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 40px;
-    text-align: center;
+.input-group button {
+    border-radius: 6px !important;
 }
 
-h1 {
-    color: #333;
+/* Específico para alinhamento CPF / CRM */
+#campo_cpf, #campo_crm {
+    transition: 0.3s ease;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 25px;
-    background: #007bff;
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background: #0056b3;
-}
-
-/* Mensagens */
-.mensagem {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    border-radius: 8px;
-    font-weight: 500;
-    color: #fff;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 9999;
-}
-
-.mensagem.sucesso {
-    background-color: #28a745;
-}
-
-.mensagem.erro {
-    background-color: #dc3545;
-}
-
-.mensagem.fade-out {
-    opacity: 0;
-}
