@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 include_once("testes/conexao_teste.php"); // conexão com o banco
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
