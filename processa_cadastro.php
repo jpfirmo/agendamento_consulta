@@ -14,9 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    /* ===============================
-        CADASTRO DE PACIENTE
-    =================================*/
+    /* CADASTRO DE PACIENTE */
     if ($tipo_usuario === 'paciente') {
 
         $nome = trim($_POST['nome'] ?? '');
@@ -78,9 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    /* ===============================
-        CADASTRO DE MÉDICO
-    =================================*/
+    /* CADASTRO DE MÉDICO */
     elseif ($tipo_usuario === 'medico') {
 
         $nome = trim($_POST['nome'] ?? '');
