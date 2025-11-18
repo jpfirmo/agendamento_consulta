@@ -1,6 +1,4 @@
-/* ============================================
-   RESET / BASE
-=============================================== */
+/* BODY */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f3f6fa;
@@ -31,9 +29,7 @@ body {
     text-align: center;
 }
 
-/* ============================================
-   HOME MINIMALISTA (index)
-=============================================== */
+/* HOME MINIMALISTA (index) */
 
 .home-minimalista {
     text-align: center;
@@ -50,9 +46,7 @@ body {
     text-decoration: underline;
 }
 
-/* ============================================
-   ÁREA LOGADA (PACIENTE / MÉDICO)
-=============================================== */
+/* ÁREA LOGADA (PACIENTE / MÉDICO) */
 
 .home-logado h1 {
     color: #333;
@@ -75,9 +69,7 @@ body {
     color: #fff;
 }
 
-/* ============================================
-   BOTÕES PADRÃO
-=============================================== */
+/* BOTÕES PADRÃO */
 
 .btn,
 .botao {
@@ -107,9 +99,7 @@ body {
     background-color: #b52a37;
 }
 
-/* ============================================
-   MENSAGENS DE FEEDBACK (LOGIN / CADASTRO)
-=============================================== */
+/* MENSAGENS DE FEEDBACK (LOGIN / CADASTRO) */
 
 .mensagem {
     padding: 10px 15px;
@@ -149,9 +139,7 @@ body {
     100% { opacity: 0; display: none; }
 }
 
-/* ============================================
-   CAMPOS E FORMULÁRIOS (login e cadastro)
-=============================================== */
+/*   CAMPOS E FORMULÁRIOS (login e cadastro) */
 
 input,
 select {
