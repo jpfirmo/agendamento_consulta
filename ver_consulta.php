@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 include_once("testes/conexao_teste.php");
 include_once("templates/header.php");
 
