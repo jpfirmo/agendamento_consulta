@@ -46,7 +46,7 @@ if (isset($_SESSION['mensagem'])) {
             <p>Aqui você poderá visualizar suas consultas marcadas e agendar novas.</p>
 
             <div class="acoes">
-                <a href="ver_consultas.php" class="btn">Ver Consultas</a>
+                <a href="ver_consulta.php" class="btn">Ver Consultas</a>
                 <a href="marcar_consulta.php" class="btn">Marcar Consulta</a>
             </div>
         </main>
