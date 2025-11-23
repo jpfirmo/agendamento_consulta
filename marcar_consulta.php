@@ -9,9 +9,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] !== 'paciente')
     exit;
 }
 
-// ---------------------------
-// 1️⃣ Buscar especialidades
-// ---------------------------
+// Buscar especialidades
 $sqlEsp = "SELECT DISTINCT especialidade FROM medico ORDER BY especialidade";
 $stmtEsp = $conn->prepare($sqlEsp);
 $stmtEsp->execute();
@@ -25,7 +23,7 @@ $dataSel = $_GET['data'] ?? '';
 $medicos = [];
 $horarios_disponiveis = [];
 
-// 2️⃣ Buscar médicos da especialidade
+// Buscar médicos da especialidade
 if ($especialidadeSel) {
     $sqlMed = "SELECT id, nome FROM medico WHERE especialidade = ?";
     $stmtMed = $conn->prepare($sqlMed);
@@ -33,7 +31,7 @@ if ($especialidadeSel) {
     $medicos = $stmtMed->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// 3️⃣ Buscar horários disponíveis
+// Buscar horários disponíveis
 if ($medicoSel && $dataSel) {
 
     $paciente_id = $_SESSION['usuario_id'];
