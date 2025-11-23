@@ -86,11 +86,14 @@ endif;
                 <a href="remarcar_consulta.php?id=<?= $c['id'] ?>" class="btn btn-warning btn-sm">
                     Remarcar
                 </a>
-                <a href="desmarcar_consulta.php?id=<?= $c['id'] ?>" 
-                   onclick="return confirm('Tem certeza que deseja desmarcar esta consulta?');"
-                   class="btn btn-danger btn-sm">
+
+                <!-- BOTÃO ABRE O MODAL -->
+                <button 
+                    class="btn btn-danger btn-sm"
+                    onclick="abrirModalDesmarcar(<?= $c['id'] ?>)">
                     Desmarcar
-                </a>
+                </button>
+
             </td>
         </tr>
         <?php endforeach; ?>
@@ -98,6 +101,46 @@ endif;
 </table>
 
 <?php endif; ?>
+
+<!-- MODAL BOOTSTRAP CONFIRMAÇÃO -->
+<div class="modal fade" id="modalDesmarcar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar Desmarcação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        Tem certeza de que deseja desmarcar esta consulta?
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        
+        <a id="btnConfirmar" href="#" class="btn btn-danger">
+            Confirmar
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function abrirModalDesmarcar(id) {
+    // Define o link de confirmação para o id correto
+    document.getElementById('btnConfirmar').href = "processa_desmarcacao.php?id=" + id;
+
+    // Abre o modal
+    const modal = new bootstrap.Modal(document.getElementById('modalDesmarcar'));
+    modal.show();
+}
+</script>
 
 </body>
 </html>
