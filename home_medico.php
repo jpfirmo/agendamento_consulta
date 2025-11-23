@@ -11,30 +11,30 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] !== 'medico') {
 $nome = htmlspecialchars($_SESSION['usuario_nome']);
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Médico</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Bem-vindo, Dr(a). <?= $nome ?> 🩺</h1>
-            <a href="logout.php" class="btn-logout">Sair</a>
-        </header>
+<div class="container my-5">
 
-        <main>
-            <h2>Sua área de médico</h2>
-            <p>Aqui você pode visualizar suas consultas marcadas e gerenciar sua agenda.</p>
+    <div class="card shadow-lg border-0 rounded-4 p-5 mx-auto" style="max-width: 800px;">
+        <h1 class="text-center mb-4" style="font-weight: 700;">
+            Bem-vindo, Dr(a). <?= $nome ?> 🩺
+        </h1>
 
-            <div class="acoes">
-                <a href="consultas_hoje.php" class="btn">Consultas de Hoje</a>
-                <a href="agenda_completa.php" class="btn">Ver Agenda Completa</a>
-            </div>
-        </main>
+        <h4 class="text-center text-muted mb-3">Sua área de médico</h4>
+
+        <p class="text-center text-secondary mb-4">
+            Aqui você pode visualizar suas consultas marcadas e gerenciar sua agenda.
+        </p>
+
+        <div class="d-flex justify-content-center gap-3">
+
+            <a href="agenda_completa.php" 
+               class="btn btn-primary px-4 py-2 mx-2" 
+               style="font-size: 1.1rem; border-radius: 12px;">
+               Ver Agenda Completa
+            </a>
+
+        </div>
     </div>
-</body>
-</html>
+
+</div>
+
+<?php include_once("templates/footer.php"); ?>
