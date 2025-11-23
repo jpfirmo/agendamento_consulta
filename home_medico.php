@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 include_once("templates/header.php");
 
 // Se o usuário não estiver logado ou não for médico, redireciona
