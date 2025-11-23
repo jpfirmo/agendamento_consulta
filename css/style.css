@@ -30,7 +30,6 @@ body {
 }
 
 /* HOME MINIMALISTA (index) */
-
 .home-minimalista {
     text-align: center;
     padding: 50px 20px;
@@ -47,7 +46,6 @@ body {
 }
 
 /* ÁREA LOGADA (PACIENTE / MÉDICO) */
-
 .home-logado h1 {
     color: #333;
 }
@@ -69,9 +67,14 @@ body {
     color: #fff;
 }
 
-/* BOTÕES PADRÃO */
 
-.btn,
+.btn:hover,
+.botao:hover {
+    background: #0056b3;
+}
+*/
+
+/* Agora só o botão personalizado usa classe própria */
 .botao {
     display: inline-block;
     margin-top: 20px;
@@ -83,11 +86,11 @@ body {
     transition: background 0.3s;
 }
 
-.btn:hover,
 .botao:hover {
     background: #0056b3;
 }
 
+/* Botão logout */
 .btn-logout {
     background-color: #dc3545;
     color: #fff !important;
@@ -99,8 +102,7 @@ body {
     background-color: #b52a37;
 }
 
-/* MENSAGENS DE FEEDBACK (LOGIN / CADASTRO) */
-
+/* MENSAGENS DE FEEDBACK */
 .mensagem {
     padding: 10px 15px;
     border-radius: 8px;
@@ -124,7 +126,7 @@ body {
     border: 1px solid #f5c6cb;
 }
 
-/* Mensagem fixa no canto (área logada) */
+/* Mensagem fixa */
 .mensagem.fixed {
     position: fixed;
     top: 20px;
@@ -139,10 +141,8 @@ body {
     100% { opacity: 0; display: none; }
 }
 
-/*   CAMPOS E FORMULÁRIOS (login e cadastro) */
-
-input,
-select {
+/* CAMPOS E FORMULÁRIOS */
+input, select {
     border-radius: 6px !important;
 }
 
@@ -150,8 +150,25 @@ select {
     border-radius: 6px !important;
 }
 
-/* Específico para alinhamento CPF / CRM */
+/* Específico CPF / CRM */
 #campo_cpf, #campo_crm {
     transition: 0.3s ease;
 }
 
+/* Home Paciente */
+
+.home-header {
+    background: #0d6efd;
+    color: white;
+}
+
+.home-card {
+    max-width: 700px;
+    width: 100%;
+    background: #ffffff;
+    border: none;
+}
+
+.home-card .btn {
+    border-radius: 12px;
+}
