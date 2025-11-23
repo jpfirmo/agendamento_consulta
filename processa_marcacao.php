@@ -2,7 +2,7 @@
 
 session_start();
 
-include_once("testes/conexao_teste.php");
+include_once("config/conexao.php");
 
 // Verifica login
 if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] !== 'paciente') {
