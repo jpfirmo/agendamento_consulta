@@ -1,13 +1,13 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class LoginTest extends TestCase
+class Teste_login extends TestCase
 {
     private $conn;
 
     protected function setUp(): void
     {
-        $this->conn = new mysqli("localhost", "root", "", "agenda_teste");
+        $this->conn = new mysqli("localhost", "root", "28132813", "agenda_teste");
         $this->conn->query("DELETE FROM paciente");
         $this->conn->query("DELETE FROM medico");
 
