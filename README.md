@@ -153,7 +153,7 @@ A seguir, o diagrama de caso de uso do sistema:
 
 ### 6.2 Interface com o Sistema
 
-O sistema realiza comunicação interna através de páginas `PHP` que interagem diretamente com o banco de dados `MySQL` utilizando a extensão `PDO`.  
+O sistema realiza comunicação interna através de páginas `PHP` que interagem diretamente com o banco de dados `heidiSQL` utilizando a extensão `PDO`.  
 As operações de **cadastro, login, agendamento, cancelamento e remarcação** são processadas pelo backend, que recebe dados enviados por formulários HTML via método **POST**.
 
 Cada funcionalidade possui um arquivo PHP específico responsável por:
