@@ -1,6 +1,8 @@
 <?php
-include_once("templates/header.php");
+include_once("templates/header_home_principal.php");
 ?>
+
+
 
 <!-- Importar o arquivo CSS -->
 <link rel="stylesheet" href="css/style.css">
