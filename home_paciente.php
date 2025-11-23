@@ -2,8 +2,7 @@
 session_start();
 include_once("templates/header.php");
 
-
-// Se o usuário não estiver logado ou não for paciente, redireciona
+// Verificação de login
 if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo_usuario'] !== 'paciente') {
     header("Location: login.php");
     exit;
@@ -19,41 +18,32 @@ $nome = htmlspecialchars($_SESSION['usuario_nome']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Paciente</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
-<body>
 
-<?php
-// Exibe mensagem de login bem-sucedido (ou qualquer outra)
-if (isset($_SESSION['mensagem'])) {
-    $mensagem = htmlspecialchars($_SESSION['mensagem']);
-    $tipo = $_SESSION['mensagem_tipo'] ?? 'sucesso';
-    echo "<div class='mensagem $tipo'>$mensagem</div>";
+<body class="bg-light">
 
-    // Limpa da sessão após exibir
-    unset($_SESSION['mensagem']);
-    unset($_SESSION['mensagem_tipo']);
-}
-?>
+<!-- 🔵 Conteúdo Centralizado -->
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card p-5 shadow-lg rounded-4 home-card text-center">
 
-    <div class="container">
-        <header>
-            <h1>Bem-vindo, <?= $nome ?> 🧑‍⚕️</h1>
-            <a href="logout.php" class="btn-logout">Sair</a>
-        </header>
+        <h2 class="fw-bold mb-3">Bem-vindo, <?= $nome ?> 👨‍⚕️</h2>
 
-        <main>
-            <h2>Sua área de paciente</h2>
-            <p>Aqui você poderá visualizar suas consultas marcadas e agendar novas.</p>
+        <h4 class="text-secondary">Sua área de paciente</h4>
+        <p class="text-muted mb-4">Aqui você poderá visualizar suas consultas marcadas e agendar novas.</p>
 
-            <div class="acoes">
-                <a href="ver_consulta.php" class="btn">Ver Consultas</a>
-                <a href="marcar_consulta.php" class="btn">Marcar Consulta</a>
-            </div>
-        </main>
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <a href="ver_consulta.php" class="btn btn-primary btn-lg px-4">Ver Consultas</a>
+            <a href="marcar_consulta.php" class="btn btn-primary btn-lg px-4">Marcar Consulta</a>
+        </div>
+
     </div>
+</div>
 
+<!-- Fade-out mensagens -->
 <script>
-// Efeito de fade-out para mensagens
 setTimeout(() => {
     const msg = document.querySelector('.mensagem');
     if (msg) {
